@@ -540,7 +540,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
             )
         )
 
-    @commands.group(cls=commands.commands._AlwaysAvailableGroup)
+    @commands.group()
     async def mydata(self, ctx: commands.Context):
         """
         Commands which interact with the data [botname] has about you.
