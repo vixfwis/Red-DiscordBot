@@ -551,7 +551,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
     # 1/10 minutes. It's a static response, but the inability to lock
     # will annoy people if it's spammable
     @commands.cooldown(1, 600, commands.BucketType.user)
-    @mydata.command(cls=commands.commands._AlwaysAvailableCommand, name="whatdata")
+    @mydata.command(name="whatdata")
     async def mydata_whatdata(self, ctx: commands.Context):
         """
         Find out what type of data [botname] stores and why.
@@ -580,7 +580,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
 
     # 1/30 minutes. It's not likely to change much and uploads a standalone webpage.
     @commands.cooldown(1, 1800, commands.BucketType.user)
-    @mydata.command(cls=commands.commands._AlwaysAvailableCommand, name="3rdparty")
+    @mydata.command(name="3rdparty")
     async def mydata_3rd_party(self, ctx: commands.Context):
         """View the End User Data statements of each 3rd-party module.
 
@@ -769,7 +769,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
     # The cooldown of this should be longer once actually implemented
     # This is a couple hours, and lets people occasionally check status, I guess.
     @commands.cooldown(1, 7200, commands.BucketType.user)
-    @mydata.command(cls=commands.commands._AlwaysAvailableCommand, name="getmydata")
+    @mydata.command(name="getmydata")
     async def mydata_getdata(self, ctx: commands.Context):
         """[Coming Soon] Get what data [botname] has about you."""
         await ctx.send(
@@ -4876,9 +4876,11 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
 
     # Removing this command from forks is a violation of the GPLv3 under which it is licensed.
     # Otherwise interfering with the ability for this command to be accessible is also a violation.
+
+    # edit: Great. I'll add license info in "About me" bot section :)
     @commands.cooldown(1, 180, lambda msg: (msg.channel.id, msg.author.id))
     @commands.command(
-        cls=commands.commands._AlwaysAvailableCommand,
+        # cls=commands.commands._AlwaysAvailableCommand,
         name="licenseinfo",
         aliases=["licenceinfo"],
         i18n=_,
